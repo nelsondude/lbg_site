@@ -1,1 +1,1 @@
-web: gunicorn lbg_site.wsgi:application --bind 0.0.0.0:8000 --workers 3
+web: gunicorn lbg_site.wsgi:application --workers 3
