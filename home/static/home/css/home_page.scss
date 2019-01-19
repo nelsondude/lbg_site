@@ -27,6 +27,7 @@
     display: flex;
     padding: 0 60px;
     overflow: hidden;
+    justify-content: center;
   }
 }
 
@@ -77,4 +78,33 @@ footer {
   hr {
     border-top: 1px solid white;
   }
+}
+
+table {
+  width: 100%;
+}
+
+tbody > tr:nth-of-type(odd) {
+  background: #f2f2f2
+}
+tbody > tr:nth-of-type(even) {
+  background: white;
+}
+
+td {
+  padding: 8px;
+}
+
+td, th {
+  border: 1px solid #ddd;
+}
+
+tr:hover {
+  background: #ddd !important;
+}
+
+th {
+  padding: 10px;
+  background: black;
+  color: white;
 }
