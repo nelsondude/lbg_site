@@ -93,6 +93,7 @@
 
   <footer>
     <div id="lbg_map">
+      <div id="map"></div>
 
     </div>
     <div id="lbg_contact">
@@ -112,4 +113,19 @@
     <a href="https://www.instagram.com/longbeachgraphix/?hl=en" class="instagram" target="_blank"><i class="fa fa-instagram"></i></a>
     <a href="https://www.linkedin.com/company/long-beach-graphix/" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
   </div>
+
+  <script>
+    var map;
+
+    function initMap() {
+      lbg = {lat: 33.772, lng: -118.14};
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: lbg,
+        zoom: 12
+      });
+      marker = new google.maps.Marker({position: lbg, map: map});
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMvk812wM6ed4uybW8Zhdhq5Jz9Q0f_tM&callback=initMap"
+          async defer></script>
 {% endblock %}
