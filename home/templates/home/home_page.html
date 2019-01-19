@@ -13,7 +13,18 @@
       <img src="{% static 'images/lbg_logo_black.png' %}" class="mx-auto d-block" alt="">
       <br>
       <div class="announcements">
-        Announcement Bar | {% for ann in page.announcements.all %}<span>{{ ann.announcement }}</span>{% endfor %}
+        Announcements |
+      <div>
+        <div class="animated_messages">
+        {% if current_announcements %}
+          {% for ann in current_announcements %}
+          <div>&nbsp;{{ ann.announcement }}</div>
+          {% endfor %}
+        {% else %}
+          <div>&nbsp;No current messages</div>
+        {% endif %}
+        </div>
+      </div>
       </div>
     </div>
   </div>
@@ -114,6 +125,10 @@
     <a href="https://www.linkedin.com/company/long-beach-graphix/" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
   </div>
 
+
+{% endblock %}
+
+{% block extra_js %}
   <script>
     var map;
 
@@ -128,4 +143,17 @@
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMvk812wM6ed4uybW8Zhdhq5Jz9Q0f_tM&callback=initMap"
           async defer></script>
-{% endblock %}
+
+  <script>
+    var height = $('.animated_messages').height();
+    var num_children = $('.animated_messages > *').length;
+    var count = 0;
+
+    setInterval(
+      function () {
+        $('.animated_messages').css('transform', 'translateY(-' + (height / num_children) * (count % num_children) + 'px)');
+        count += 1;
+      }, 3000
+    );
+  </script>
+{% endblock extra_js %}

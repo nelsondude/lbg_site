@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 from django.utils import timezone
 from modelcluster.fields import ParentalKey
 from wagtail.contrib.table_block.blocks import TableBlock
@@ -37,6 +38,13 @@ class HomePage(Page):
         ], heading='Contact Information')
     ]
 
+    def get_context(self, request, *args, **kwargs):
+        context = super(HomePage, self).get_context(request)
+        context['current_announcements'] = Announcement.objects\
+            .filter(start_date__lte=timezone.now().date())\
+            .filter(Q(end_date__gte=timezone.now().date()) | Q(end_date=None))
+        return context
+
 
 class GalleryImage(Orderable):
     page = ParentalKey(HomePage, on_delete=models.CASCADE, related_name='gallery_images')
@@ -55,7 +63,7 @@ class Announcement(Orderable):
     page = ParentalKey(HomePage, on_delete=models.CASCADE, related_name='announcements')
     announcement = models.CharField(blank=True, max_length=200)
     start_date = models.DateField(default=timezone.now(), null=False)
-    end_date = models.DateField(null=True)
+    end_date = models.DateField(null=True, blank=True)
 
     panels = [
         FieldPanel('announcement'),
