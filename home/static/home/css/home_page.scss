@@ -38,3 +38,28 @@
     padding: 100px 0;
   }
 }
+
+footer {
+  display: flex;
+  min-height: 300px;
+  & > div:first-child {
+    flex-grow: 1;
+  }
+}
+
+#lbg_contact {
+  padding: 40px 20px;
+  width: 50%;
+  background: black;
+  color: white;
+  text-align: center;
+  img {
+    width: 60%;
+  }
+  a {
+    display: block;
+  }
+  hr {
+    border-top: 1px solid white;
+  }
+}

@@ -82,8 +82,30 @@
     <div class="header-right">
       Pricing
     </div>
-
+    <div class="container">
+      {% for section in page.pricing_sections.all %}
+        <h1>{{ section.pricing_title }}</h1>
+        <p>{{ section.caption }}</p>
+        {{ section.body }}
+      {% endfor %}
+    </div>
   </div>
+
+  <footer>
+    <div id="lbg_map">
+
+    </div>
+    <div id="lbg_contact">
+      <img src="{% static 'images/lbg_logo.png' %}" class="mx-auto d-block" alt="">
+      {% if page.address %}<div>{{ page.address }}</div>{% endif %}
+      {% if page.phone %}<a href="tel:{{ page.phone }}">{{ page.phone }}</a>{% endif %}
+      {% if page.email %}<a href="mailto:{{ page.email }}">{{ page.email }}</a>{% endif %}
+
+      <hr>
+      <h3>Hours</h3>
+      {{ page.hours }}
+    </div>
+  </footer>
 
   <div class="icon-bar">
     <a href="https://www.facebook.com/lbgraphix/" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a>
