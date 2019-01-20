@@ -29,20 +29,20 @@
     </div>
   </div>
   <div id="about">
-    <div class="header-left">
-      About
+    <div class="background-svg left">
+      <img src="{% static 'home/images/left.svg' %}">
+      <h3>ABOUT</h3>
     </div>
-    <div class="container">
-      <p>
-        {{ page.about_content|richtext }}
-      </p>
+    <div class="container" id="about-content">
+      {{ page.about_content|richtext }}
     </div>
   </div>
   <div id="samples">
-    <div class="header-right">
-      Samples
+    <div class="background-svg right">
+      <img src="{% static 'home/images/right.svg' %}">
+      <h3>Samples</h3>
     </div>
-    <div class="gallery">
+    <div class="gallery" id="image-gallery">
 
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -70,28 +70,31 @@
 
   </div>
   <div id="vendors">
-    <div class="header-left">
-      Vendors
+    <div class="background-svg left">
+      <img src="{% static 'home/images/left.svg' %}">
+      <h3>vendors</h3>
     </div>
 
   </div>
   <div id="designlab">
-    <div class="header-right">
-      Design Lab
-
+    <div class="background-svg right">
+      <img src="{% static 'home/images/right.svg' %}">
+      <h3>Design Lab</h3>
     </div>
     <img src="http://www.layoutlab.com/images/welcome/logo.png" alt="">
   </div>
-  <div id="payment">
-    <div class="header-left">
-      Payment Processing
 
+  <div id="payment">
+    <div class="background-svg left">
+      <img src="{% static 'home/images/left.svg' %}">
+      <h3>payments</h3>
     </div>
 
   </div>
   <div id="pricing">
-    <div class="header-right">
-      Pricing
+    <div class="background-svg right">
+      <img src="{% static 'home/images/right.svg' %}">
+      <h3>pricing</h3>
     </div>
     <div class="container">
       {% for section in page.pricing_sections.all %}
