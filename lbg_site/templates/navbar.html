@@ -3,12 +3,12 @@
   <a class="navbar-brand" href="#landing">
     <img src="{% static 'images/lbg_logo.png' %}" class="img-responsive" alt="" height="40px">
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-links"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="nav-links">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <a class="nav-link" href="#about">About</a>
@@ -46,7 +46,8 @@
           scrollTop: $(hash).offset().top - 100
       }, 500);
       window.location.href = hash;
-    })
+      $('#nav-links').collapse('hide');
+    });
   </script>
 
 {% endblock extra_js %}
