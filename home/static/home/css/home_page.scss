@@ -31,10 +31,6 @@
   }
 }
 
-#about-content, #image-gallery {
-  padding: 100px;
-}
-
 .background-svg {
   position: relative;
   height: 80px;
@@ -143,4 +139,8 @@ th {
   padding: 10px;
   background: black;
   color: white;
+}
+
+.section {
+  padding: 80px 0;
 }

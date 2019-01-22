@@ -33,7 +33,7 @@
       <img src="{% static 'home/images/left.svg' %}">
       <h3>ABOUT</h3>
     </div>
-    <div class="container" id="about-content">
+    <div class="container section">
       {{ page.about_content|richtext }}
     </div>
   </div>
@@ -42,29 +42,16 @@
       <img src="{% static 'home/images/right.svg' %}">
       <h3>Samples</h3>
     </div>
-    <div class="gallery" id="image-gallery">
-
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          {% for _ in page.gallery_images.all %}
-            <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
-          {% endfor %}
-        </ol>
-        <div class="carousel-inner">
-          {% for item in page.gallery_images.all %}
-            <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}" style="text-align: center;">
-              {% image item.image fill-320x240 %}
-            </div>
-          {% endfor %}
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+    <div class="container section">
+      <div id="nanogallery" data-nanogallery2='{
+          "thumbnailHeight": auto,
+          "thumbnailWidth": 300,
+       }'>
+        <!-- gallery content -->
+        {% for item in page.gallery_images.all %}
+          {% image item.image width-400 as tmp_photo %}
+          <a href="{{ tmp_photo.url }}" data-ngThump="{{ tmp_photo.url }}">{{ item.caption }}</a>
+        {% endfor %}
       </div>
     </div>
 
@@ -81,7 +68,11 @@
       <img src="{% static 'home/images/right.svg' %}">
       <h3>Design Lab</h3>
     </div>
-    <img src="http://www.layoutlab.com/images/welcome/logo.png" alt="">
+    <div class="container section text-center">
+      <a href="{{ page.layout_lab_link }}" target="_blank">
+        <img src="http://www.layoutlab.com/images/welcome/logo.png" alt="">
+      </a>
+    </div>
   </div>
 
   <div id="payment">
@@ -96,7 +87,7 @@
       <img src="{% static 'home/images/right.svg' %}">
       <h3>pricing</h3>
     </div>
-    <div class="container">
+    <div class="container section">
       {% for section in page.pricing_sections.all %}
         <h1>{{ section.pricing_title }}</h1>
         <p>{{ section.caption }}</p>
@@ -150,6 +141,7 @@
           async defer></script>
 
   <script>
+    {#animated announcements#}
     var height = $('.animated_messages').height();
     var num_children = $('.animated_messages > *').length;
     var count = 0;
