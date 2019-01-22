@@ -1,6 +1,6 @@
 {% load static %}
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" id="site-nav">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="#landing">
     <img src="{% static 'images/lbg_logo.png' %}" class="img-responsive" alt="" height="40px">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -11,16 +11,25 @@
   <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Gallery</a>
+        <a class="nav-link" href="#about">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Vendors</a>
+        <a class="nav-link" href="#samples">Samples</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Design</a>
+        <a class="nav-link" href="#vendors">Vendors</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link" href="#designlab">Design</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#payment">Payment</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#pricing">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#contact">Contact</a>
       </li>
     </ul>
   </div>
@@ -28,5 +37,16 @@
 
 
 {% block extra_js %}
+
+  <script>
+    $('.nav-link, .navbar-brand').click(function(e) {
+      e.preventDefault();
+      var hash = $(this)[0].hash;
+      $('html, body').animate({
+          scrollTop: $(hash).offset().top - 100
+      }, 500);
+      window.location.href = hash;
+    })
+  </script>
 
 {% endblock extra_js %}
