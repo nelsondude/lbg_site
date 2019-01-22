@@ -126,31 +126,34 @@
 
 {% block extra_js %}
   <script>
-    var map;
+
+    function animateAnnouncements() {
+      var height = $('.animated_messages').height();
+      var num_children = $('.animated_messages > *').length;
+      var count = 0;
+
+      setInterval(
+        function () {
+          $('.animated_messages').css('transform', 'translateY(-' + (height / num_children) * (count % num_children) + 'px)');
+          count += 1;
+        }, 3000
+      );
+    }
 
     function initMap() {
-      lbg = {lat: 33.772, lng: -118.14};
-      map = new google.maps.Map(document.getElementById('map'), {
+      const lbg = {lat: 33.772, lng: -118.14};
+      const map = new google.maps.Map(document.getElementById('map'), {
         center: lbg,
         zoom: 12
       });
       marker = new google.maps.Marker({position: lbg, map: map});
     }
+
+    $(document).ready(function () {
+      animateAnnouncements();
+    })
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMvk812wM6ed4uybW8Zhdhq5Jz9Q0f_tM&callback=initMap"
           async defer></script>
 
-  <script>
-    {#animated announcements#}
-    var height = $('.animated_messages').height();
-    var num_children = $('.animated_messages > *').length;
-    var count = 0;
-
-    setInterval(
-      function () {
-        $('.animated_messages').css('transform', 'translateY(-' + (height / num_children) * (count % num_children) + 'px)');
-        count += 1;
-      }, 3000
-    );
-  </script>
 {% endblock extra_js %}
