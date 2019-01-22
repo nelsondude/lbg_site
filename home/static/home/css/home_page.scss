@@ -5,6 +5,9 @@
 
   .animated_messages {
     transition: all .4s;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
 
     div {
       white-space: nowrap;
