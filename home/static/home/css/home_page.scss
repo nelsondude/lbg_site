@@ -31,6 +31,12 @@
     padding: 0 60px;
     overflow: hidden;
     justify-content: center;
+    margin: 0 40px;
+    
+    @media (max-width: 550px) {
+      font-size: 13px;
+      padding: 0 30px;
+    }
   }
 }
 
@@ -48,6 +54,17 @@
     width: 100%;
     height: 100%;
   }
+  h3 {
+    white-space: nowrap;
+  }
+  @media (max-width: 650px) {
+    h3 {
+      font-size: 20px;
+      padding-left: 15% !important;
+      padding-right: 15% !important;
+    }
+    height: 70px;
+  }
 }
 
 .background-svg.right {
@@ -62,19 +79,6 @@
   h3 {
     padding-left: 21%;
   }
-}
-
-.header-left, .header-right {
-  height: 60px;
-  line-height: 60px;
-  background: black;
-  border-radius: 5px;
-  text-align: left;
-  color: white;
-  padding: 0 150px;
-  margin-bottom: 20px;
-  font-size: 35px;
-  text-transform: uppercase;
 }
 
 #designlab {
@@ -145,5 +149,6 @@ th {
 }
 
 .section {
-  padding: 80px 0;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }

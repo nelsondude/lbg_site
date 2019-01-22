@@ -13,12 +13,12 @@
       <img src="{% static 'images/lbg_logo_black.png' %}" class="mx-auto d-block" alt="">
       <br>
       <div class="announcements">
-        Announcements |
+        Announcements&nbsp;&vert;&nbsp;
       <div>
         <div class="animated_messages">
         {% if current_announcements %}
           {% for ann in current_announcements %}
-          <div>&nbsp;{{ ann.announcement }}</div>
+          <div>{{ ann.announcement }}</div>
           {% endfor %}
         {% else %}
           <div>&nbsp;No current messages</div>
