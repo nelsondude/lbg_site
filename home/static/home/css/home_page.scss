@@ -28,14 +28,12 @@
     line-height: 50px;
     text-transform: uppercase;
     display: flex;
-    padding: 0 60px;
     overflow: hidden;
     justify-content: center;
     margin: 0 40px;
     
     @media (max-width: 550px) {
       font-size: 13px;
-      padding: 0 30px;
     }
   }
 }
