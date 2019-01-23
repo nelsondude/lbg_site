@@ -1,49 +1,54 @@
+//Landing Styling
+$header-height-m: 80px;
+$header-height-sm: 70px;
+
+
 #landing {
-  text-align: center;
-  min-height: 700px;
+  min-height: calc(100vh - #{$header-height-m} - 50px);
   position: relative;
-
-  .animated_messages {
-    transition: all .4s;
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-
-    div {
-      white-space: nowrap;
-    }
+  text-align: center;
+  @media (max-width: 550px) {
+    min-height: calc(100vh - #{$header-height-sm} - 50px);
   }
-
-  .landing-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .announcements {
-    background: rgb(250, 233, 189);
-    border-radius: 200px;
-    height: 50px;
-    line-height: 50px;
-    text-transform: uppercase;
-    display: flex;
-    overflow: hidden;
-    justify-content: center;
-    margin: 0 40px;
-    
-    @media (max-width: 550px) {
-      font-size: 13px;
-    }
+  img {
+    max-width: 100%;
   }
 }
 
+.announcements {
+  background: rgb(250, 233, 189);
+  border-radius: 200px;
+  height: 50px;
+  line-height: 50px;
+  display: inline-block;
+  text-transform: uppercase;
+  overflow: hidden;
+  padding: 0 20px;
+  text-align: left;
+
+  @media (max-width: 550px) {
+    font-size: 13px;
+  }
+}
+
+#ann-header {
+  display: inline-block;
+}
+
+#ann-content {
+  display: inline-block;
+  transition: all .4s;
+  vertical-align: top;
+  div {
+    white-space: nowrap;
+  }
+}
+
+//Header Styling
 .background-svg {
   position: relative;
-  height: 80px;
+  height: $header-height-m;
   color: white;
-  display: flex;
-  align-items: flex-end;
   text-transform: uppercase;
   margin-bottom: 50px;
   img {
@@ -54,35 +59,38 @@
   }
   h3 {
     white-space: nowrap;
+    &:hover {
+      cursor: pointer;
+    }
   }
   @media (max-width: 650px) {
     h3 {
       font-size: 20px;
-      padding-left: 15% !important;
-      padding-right: 15% !important;
     }
-    height: 70px;
+    height: $header-height-sm;
   }
 }
 
-.background-svg.right {
-  justify-content: flex-end;
-  h3 {
-    padding-right: 21%;
-  }
+$edge-distance: 70%;
+
+.background-svg.right h3 {
+  position: absolute;
+  left: $edge-distance;
+  bottom: 0;
 }
 
-.background-svg.left {
-  justify-content: flex-start;
-  h3 {
-    padding-left: 21%;
-  }
+.background-svg.left h3 {
+  position: absolute;
+  right: $edge-distance;
+  bottom: 0;
 }
 
+//Design Lab Styling
 #designlab {
   //text-align: center;
 }
 
+//Footer Styling
 footer {
   display: flex;
   min-height: 300px;
@@ -116,6 +124,7 @@ footer {
   }
 }
 
+//Pricing Styling
 table {
   width: 100%;
 }
@@ -146,6 +155,7 @@ th {
   color: white;
 }
 
+//Global Styling
 .section {
   padding-top: 80px;
   padding-bottom: 80px;

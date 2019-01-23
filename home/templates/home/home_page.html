@@ -8,27 +8,29 @@
 {% endblock extra_css %}
 
 {% block content %}
-  <div id="landing">
-    <div class="landing-content">
-      <img src="{% static 'images/lbg_logo_black.png' %}" class="mx-auto d-block" alt="" style="max-width: 100%;">
-      <br>
-      <div class="announcements">
+
+
+  <section id="landing">
+    <img src="{% static 'images/lbg_logo_black.png' %}" class="mx-auto d-block" alt="">
+    <br>
+    <div class="announcements">
+      <div id="ann-header">
         Announcements&nbsp;&vert;&nbsp;
-      <div>
-        <div class="animated_messages">
+      </div>
+      <div id="ann-content">
         {% if current_announcements %}
           {% for ann in current_announcements %}
-          <div>{{ ann.announcement }}</div>
+            <div>{{ ann.announcement }}</div>
           {% endfor %}
         {% else %}
-          <div>&nbsp;No current messages</div>
+          <div>No current messages</div>
         {% endif %}
-        </div>
-      </div>
       </div>
     </div>
-  </div>
-  <div id="about">
+  </section>
+
+
+  <section id="about">
     <div class="background-svg left">
       <img src="{% static 'home/images/left.svg' %}">
       <h3>ABOUT</h3>
@@ -36,8 +38,10 @@
     <div class="container section">
       {{ page.about_content|richtext }}
     </div>
-  </div>
-  <div id="samples">
+  </section>
+
+
+  <section id="samples">
     <div class="background-svg right">
       <img src="{% static 'home/images/right.svg' %}">
       <h3>Samples</h3>
@@ -54,16 +58,18 @@
         {% endfor %}
       </div>
     </div>
+  </section>
 
-  </div>
-  <div id="vendors">
+
+  <section id="vendors">
     <div class="background-svg left">
       <img src="{% static 'home/images/left.svg' %}">
       <h3>vendors</h3>
     </div>
+  </section>
 
-  </div>
-  <div id="designlab">
+
+  <section id="designlab">
     <div class="background-svg right">
       <img src="{% static 'home/images/right.svg' %}">
       <h3>Design Lab</h3>
@@ -73,16 +79,18 @@
         <img src="http://www.layoutlab.com/images/welcome/logo.png" alt="" style="max-width: 80%;">
       </a>
     </div>
-  </div>
+  </section>
 
-  <div id="payment">
+
+  <section id="payment">
     <div class="background-svg left">
       <img src="{% static 'home/images/left.svg' %}">
       <h3>payments</h3>
     </div>
+  </section>
 
-  </div>
-  <div id="pricing">
+
+  <section id="pricing">
     <div class="background-svg right">
       <img src="{% static 'home/images/right.svg' %}">
       <h3>pricing</h3>
@@ -96,7 +104,7 @@
         <hr>
       {% endfor %}
     </div>
-  </div>
+  </>
 
   <footer id="contact">
     <div id="lbg_map">
@@ -128,13 +136,13 @@
   <script>
 
     function animateAnnouncements() {
-      var height = $('.animated_messages').height();
-      var num_children = $('.animated_messages > *').length;
+      var height = $('#ann-content').height();
+      var num_children = $('#ann-content > *').length;
       var count = 0;
 
       setInterval(
         function () {
-          $('.animated_messages').css('transform', 'translateY(-' + (height / num_children) * (count % num_children) + 'px)');
+          $('#ann-content').css('transform', 'translateY(-' + (height / num_children) * (count % num_children) + 'px)');
           count += 1;
         }, 3000
       );
@@ -151,6 +159,15 @@
 
     $(document).ready(function () {
       animateAnnouncements();
+
+      $('.background-svg > h3').click(function (e) {
+        var hash = '#' + $(this).parent().parent()[0].id;
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top - 100
+        }, 500);
+        window.location.href = hash;
+        $('#nav-links').collapse('hide');
+      })
     })
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMvk812wM6ed4uybW8Zhdhq5Jz9Q0f_tM&callback=initMap"
