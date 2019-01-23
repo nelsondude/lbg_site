@@ -27,6 +27,9 @@
         {% endif %}
       </div>
     </div>
+{#    <div class="image-wrapper">#}
+      <img src="{% static 'home/images/nyc.png' %}" id="skyline" alt="">
+{#    </div>#}
   </section>
 
 
@@ -148,6 +151,7 @@
       );
     }
 
+    // Used by google maps API below
     function initMap() {
       const lbg = {lat: 33.772, lng: -118.14};
       const map = new google.maps.Map(document.getElementById('map'), {
@@ -157,9 +161,22 @@
       marker = new google.maps.Marker({position: lbg, map: map});
     }
 
-    $(document).ready(function () {
-      animateAnnouncements();
+    function setupAos() {
+      $('.background-svg.right').each(function () {
+        $(this).attr('data-aos', 'fade-left');
+      });
+      $('.background-svg.left').each(function(i) {
+        if (i > 0) {
+          $(this).attr('data-aos', 'fade-right')
+        }
+      });
+      AOS.init({
+        anchorPlacement: 'top-top',
+        delay: 100
+      });
+    }
 
+    function setupHeaderScroll() {
       $('.background-svg > h3').click(function (e) {
         var hash = '#' + $(this).parent().parent()[0].id;
         $('html, body').animate({
@@ -167,7 +184,13 @@
         }, 500);
         window.location.href = hash;
         $('#nav-links').collapse('hide');
-      })
+      });
+    }
+
+    $(document).ready(function () {
+      setupAos();
+      animateAnnouncements();
+      setupHeaderScroll();
     })
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMvk812wM6ed4uybW8Zhdhq5Jz9Q0f_tM&callback=initMap"
