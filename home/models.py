@@ -38,6 +38,8 @@ class HomePage(Page):
         ], heading='Contact Information')
     ]
 
+    parent_page_types = []
+
     def get_context(self, request, *args, **kwargs):
         context = super(HomePage, self).get_context(request)
         context['current_announcements'] = Announcement.objects\
