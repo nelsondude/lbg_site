@@ -4,7 +4,7 @@ $header-height-sm: 60x;
 
 
 #landing {
-  min-height: calc(100vh - #{$header-height-m} - 50px - 8px);
+  min-height: calc(100vh - #{$header-height-m} - 50px - 8px); // last is the height of the total box shadow
   position: relative;
   text-align: center;
   padding-top: 60px;
@@ -64,8 +64,8 @@ $header-color: #FAECC9;
   text-transform: uppercase;
   margin-bottom: 50px;
   box-shadow:
-    0 0 0 5px black,
-    0 0 0 8px $header-color;
+    0 5px 0 0 black,
+    0 8px 0 0 $header-color;
   img {
     z-index: -1;
     max-width: 380px;
