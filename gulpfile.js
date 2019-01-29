@@ -19,6 +19,7 @@ gulp.task('watch', function () {
   /* Trigger a live reload on any Django template changes */
   gulp.start('scss');
   gulp.watch('**/*.html').on('change', livereload.changed);
+  gulp.watch('**/*.svg').on('change', livereload.changed);
   gulp.watch(cssMatch, ['scss']);
 });
 

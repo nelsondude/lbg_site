@@ -33,7 +33,6 @@
 
   <section id="about">
     <div class="background-svg left">
-      <img src="{% static 'home/images/left.svg' %}">
       <h3>ABOUT</h3>
     </div>
     <div class="container section">
@@ -44,7 +43,6 @@
 
   <section id="samples">
     <div class="background-svg right">
-      <img src="{% static 'home/images/right.svg' %}">
       <h3>Samples</h3>
     </div>
     <div class="container section">
@@ -64,7 +62,6 @@
 
   <section id="vendors">
     <div class="background-svg left">
-      <img src="{% static 'home/images/left.svg' %}">
       <h3>vendors</h3>
     </div>
   </section>
@@ -72,7 +69,6 @@
 
   <section id="designlab">
     <div class="background-svg right">
-      <img src="{% static 'home/images/right.svg' %}">
       <h3>Design Lab</h3>
     </div>
     <div class="container section text-center">
@@ -85,7 +81,6 @@
 
   <section id="payment">
     <div class="background-svg left">
-      <img src="{% static 'home/images/left.svg' %}">
       <h3>payments</h3>
     </div>
   </section>
@@ -93,7 +88,6 @@
 
   <section id="pricing">
     <div class="background-svg right">
-      <img src="{% static 'home/images/right.svg' %}">
       <h3>pricing</h3>
     </div>
     <div class="container section">
@@ -110,7 +104,6 @@
   <footer id="contact">
     <div id="lbg_map">
       <div id="map"></div>
-
     </div>
     <div id="lbg_contact">
       <img src="{% static 'images/lbg_logo.png' %}" class="mx-auto d-block" alt="">
@@ -174,7 +167,7 @@
       });
     }
 
-    function setupHeaderScroll() {
+    function setupHeaders() {
       $('.background-svg > h3').click(function (e) {
         var hash = '#' + $(this).parent().parent()[0].id;
         $('html, body').animate({
@@ -183,12 +176,14 @@
         window.location.href = hash;
         $('#nav-links').collapse('hide');
       });
+
+      $('.background-svg').prepend("<img src='{% static 'home/images/right.svg' %}'>")
     }
 
     $(document).ready(function () {
       setupAos();
       animateAnnouncements();
-      setupHeaderScroll();
+      setupHeaders();
     })
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMvk812wM6ed4uybW8Zhdhq5Jz9Q0f_tM&callback=initMap"

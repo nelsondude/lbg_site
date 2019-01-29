@@ -1,10 +1,10 @@
 //Landing Styling
-$header-height-m: 80px;
-$header-height-sm: 70px;
+$header-height-m: 60px;
+$header-height-sm: 60x;
 
 
 #landing {
-  min-height: calc(100vh - #{$header-height-m} - 50px);
+  min-height: calc(100vh - #{$header-height-m} - 50px - 3px);
   position: relative;
   text-align: center;
   padding-top: 60px;
@@ -56,44 +56,66 @@ $header-height-sm: 70px;
 }
 
 //Header Styling
+$header-color: #FAECC9;
+
 .background-svg {
   position: relative;
   height: $header-height-m;
-  color: white;
   text-transform: uppercase;
   margin-bottom: 50px;
+  outline: 3px solid $header-color;
+  border-bottom: 5px solid black;
   img {
-    position: absolute;
     z-index: -1;
-    width: 100%;
+    max-width: 380px;
     height: 100%;
   }
   h3 {
     white-space: nowrap;
+    font-size: 20px;
+    bottom: -5px;
+    color: #FAECC9;
+
     &:hover {
       cursor: pointer;
     }
   }
   @media (max-width: 650px) {
-    h3 {
-      font-size: 20px;
-    }
     height: $header-height-sm;
   }
 }
 
-$edge-distance: 70%;
+$edge-distance: 150px;
 
-.background-svg.right h3 {
-  position: absolute;
-  left: $edge-distance;
-  bottom: 0;
+.background-svg.right {
+  img {
+    float: right;
+  }
+  h3 {
+    position: absolute;
+    right: $edge-distance;
+  }
 }
 
-.background-svg.left h3 {
-  position: absolute;
-  right: $edge-distance;
-  bottom: 0;
+.background-svg.left {
+  h3 {
+    position: absolute;
+    left: $edge-distance;
+  }
+
+  img {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    -ms-filter: "FlipH";
+  }
+}
+
+.header-img-wrapper {
+  height: inherit;
+  max-width: 1200px;
+  margin: auto;
 }
 
 //Design Lab Styling

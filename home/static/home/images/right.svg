@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg preserveAspectRatio="none" width="526px" height="82px" viewBox="0 0 526 82" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg preserveAspectRatio="none" width="264px" height="48px" viewBox="0 0 264 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
-    <title>Group</title>
+    <title>Path</title>
     <desc>Created with Sketch.</desc>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group" fill="#000000">
-            <path d="M274.797239,76.5195313 L289.867672,45.383727 C293.876653,37.101095 302.268366,31.8398438 311.470209,31.8398438 L437.302605,31.8398438 C443.669626,31.8398438 449.430708,28.0647397 451.972425,22.2270484 L456.941467,10.8143947 C459.800898,4.24699211 466.282115,4.03956537e-14 473.445014,3.90798505e-14 L525.362797,0 L525.362797,76.5195313 L274.797239,76.5195313 Z" id="Path"></path>
-            <rect id="Rectangle" x="0" y="75" width="525" height="7"></rect>
+        <g id="Group" transform="translate(-285.000000, 0.000000)" fill="#000000">
+            <path d="M285,48 L301.655218,18.7359188 C302.544265,17.1738169 304.203342,16.2090969 306.00072,16.2090969 L446.958,16.2090969 C451.200009,16.2090969 455.12683,13.9694684 457.286456,10.3183509 L461.937916,2.4544775 C462.83776,0.933178562 464.473936,1.41847302e-14 466.241439,4.4408921e-15 L549,-2.84217094e-14 L549,48 L285,48 Z" id="Path"></path>
         </g>
     </g>
 </svg>
