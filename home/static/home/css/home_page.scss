@@ -11,6 +11,7 @@ $header-height-sm: 60x;
   @media (max-width: 550px) {
     min-height: calc(100vh - #{$header-height-sm} - 50px);
   }
+
   img {
     max-width: 100%;
   }
@@ -40,6 +41,7 @@ $header-height-sm: 60x;
   display: inline-block;
   transition: all .4s;
   vertical-align: top;
+
   div {
     white-space: nowrap;
   }
@@ -63,14 +65,15 @@ $header-color: #FAECC9;
   height: $header-height-m;
   text-transform: uppercase;
   margin-bottom: 50px;
-  box-shadow:
-    0 5px 0 0 black,
-    0 8px 0 0 $header-color;
+  box-shadow: 0 5px 0 0 black,
+  0 8px 0 0 $header-color;
+
   img {
     z-index: -1;
     max-width: 380px;
     height: 100%;
   }
+
   h3 {
     white-space: nowrap;
     font-size: 20px;
@@ -81,6 +84,7 @@ $header-color: #FAECC9;
       cursor: pointer;
     }
   }
+
   @media (max-width: 650px) {
     height: $header-height-sm;
   }
@@ -92,6 +96,7 @@ $edge-distance: 150px;
   img {
     float: right;
   }
+
   h3 {
     position: absolute;
     right: $edge-distance;
