@@ -11,10 +11,6 @@ $header-height-sm: 60x;
   @media (max-width: 550px) {
     min-height: calc(100vh - #{$header-height-sm} - 50px);
   }
-
-  img {
-    max-width: 100%;
-  }
 }
 
 .announcements {
@@ -47,14 +43,16 @@ $header-height-sm: 60x;
   }
 }
 
+#landing-logo {
+  max-width: 100%;
+}
+
 #skyline {
-  min-width: 800px;
+  width: 1600px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
-  top: 300px;
-  max-height: 350px;
 }
 
 //Header Styling
