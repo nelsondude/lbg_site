@@ -4,8 +4,10 @@
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
+    "autoprefixer": "^9.4.7",
     "gulp": "^3.9.1",
     "gulp-livereload": "^4.0.1",
+    "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",
     "livereload": "^0.7.0",
     "node-sass": "^4.11.0"

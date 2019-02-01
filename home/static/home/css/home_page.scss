@@ -108,11 +108,7 @@ $edge-distance: 150px;
   }
 
   img {
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
-    -ms-filter: "FlipH";
   }
 }
 
