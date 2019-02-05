@@ -1,6 +1,7 @@
 //Landing Styling
 $header-height-m: 60px;
 $header-height-sm: 60x;
+$tan: rgb(249, 237, 202);
 
 
 #landing {
@@ -8,6 +9,7 @@ $header-height-sm: 60x;
   position: relative;
   text-align: center;
   padding-top: 60px;
+  text-transform: uppercase;
   @media (max-width: 550px) {
     min-height: calc(100vh - #{$header-height-sm} - 50px);
   }
@@ -47,12 +49,28 @@ $header-height-sm: 60x;
   max-width: 100%;
 }
 
-#skyline {
+
+
+%section-image {
   width: 1600px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
+}
+
+#skyline {
+  @extend %section-image;
+}
+
+#queenmary {
+  @extend %section-image;
+  top: 100px;
+}
+
+#pyramid {
+  @extend  %section-image;
+  top: 220px;
 }
 
 //Header Styling
@@ -63,6 +81,7 @@ $header-color: #FAECC9;
   height: $header-height-m;
   text-transform: uppercase;
   margin-bottom: 50px;
+  z-index: -2;
   box-shadow: 0 5px 0 0 black,
   0 8px 0 0 $header-color;
 
@@ -85,6 +104,14 @@ $header-color: #FAECC9;
 
   @media (max-width: 650px) {
     height: $header-height-sm;
+  }
+  &:after {
+    content: ' ';
+    display: block;
+    background: $tan;
+    width: 100%;
+    height: 200px;
+    transform: translateY(60px);
   }
 }
 
@@ -201,4 +228,16 @@ th {
 
 section {
   overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+#payment {
+  background: $tan;
+  height: 80px;
+  padding-left: 30px;
+  h3 {
+    display: inline;
+    line-height: 80px;
+  }
 }

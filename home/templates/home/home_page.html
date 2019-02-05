@@ -13,6 +13,8 @@
   <section id="landing">
     <img src="{% static 'images/lbg_logo_black.png' %}" class="mx-auto d-block" id="landing-logo" alt="">
     <br>
+    <h5>local and family owned since 2009</h5>
+    <br>
     <div class="announcements">
       <div id="ann-header">
         Announcements&nbsp;&vert;&nbsp;
@@ -32,17 +34,18 @@
 
 
   <section id="about">
-    <div class="background-svg left">
+    <div class="background-svg">
       <h3>ABOUT</h3>
     </div>
     <div class="container section">
       {{ page.about_content|richtext }}
     </div>
+    <img src="{% static 'home/images/queenmary.png' %}" alt="" id="queenmary">
   </section>
 
 
   <section id="samples">
-    <div class="background-svg right">
+    <div class="background-svg">
       <h3>Samples</h3>
     </div>
     <div class="container section">
@@ -57,18 +60,19 @@
         {% endfor %}
       </div>
     </div>
+    <img src="{% static 'home/images/pyramid.png' %}" alt="" id="pyramid">
   </section>
 
 
   <section id="vendors">
-    <div class="background-svg left">
+    <div class="background-svg">
       <h3>vendors</h3>
     </div>
   </section>
 
 
   <section id="designlab">
-    <div class="background-svg right">
+    <div class="background-svg">
       <h3>Design Lab</h3>
     </div>
     <div class="container section text-center">
@@ -78,32 +82,28 @@
     </div>
   </section>
 
-
-  <section id="payment">
-    <div class="background-svg left">
-      <h3>payments</h3>
-    </div>
-  </section>
-
-
   <section id="pricing">
-    <div class="background-svg right">
-      <h3>pricing</h3>
-    </div>
-    <div class="container section">
-      {% for section in page.pricing_sections.all %}
-        <h1>{{ section.pricing_title }}</h1>
-        <p>{{ section.caption }}</p>
+    {% for section in page.pricing_sections.all %}
+      <div class="background-svg">
+        <h3>{{ section.pricing_title }}</h3>
+      </div>
+      <div class="container">
+        <h3>{{ section.pricing_title }} Pricing</h3>
+        <p class="text-muted">{{ section.caption }}</p>
         {{ section.body }}
         <br>
-        <hr>
-      {% endfor %}
-    </div>
+        <br>
+        <br>
+      </div>
+
+    {% endfor %}
   </section>
 
   <footer id="contact">
     <div id="lbg_map">
-      <div id="map"></div>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.5596200497284!2d-118.14364014907135!3d33.77204403979623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd31b6d2ead1d7%3A0x341943fd18ebd091!2s406+Ximeno+Ave%2C+Long+Beach%2C+CA+90814!5e0!3m2!1sen!2sus!4v1549293989595"
+        width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
     <div id="lbg_contact">
       <img src="{% static 'images/lbg_logo.png' %}" class="mx-auto d-block" alt="">
@@ -116,6 +116,12 @@
       {{ page.hours }}
     </div>
   </footer>
+
+
+  <section id="payment">
+    <h3>PAYMENTS AND DEPOSITS</h3>
+    <img src="{% static 'home/images/cards.jpeg' %}" alt="" style="float: right; height: 100%;">
+  </section>
 
   <div class="icon-bar d-none d-md-block">
     <a href="https://www.facebook.com/lbgraphix/" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -142,24 +148,15 @@
       );
     }
 
-    // Used by google maps API below
-    function initMap() {
-      const lbg = {lat: 33.772, lng: -118.14};
-      const map = new google.maps.Map(document.getElementById('map'), {
-        center: lbg,
-        zoom: 12
-      });
-      marker = new google.maps.Marker({position: lbg, map: map});
-    }
-
     function setupAos() {
-      $('.background-svg.right').each(function () {
-        $(this).attr('data-aos', 'fade-left');
-      });
-      $('.background-svg.left').each(function(i) {
-        if (i > 0) {
-          $(this).attr('data-aos', 'fade-right')
-        }
+      $('.background-svg').each(function(i) {
+        $(this).addClass('left').attr('data-aos', 'fade-right');
+        //Following code alternates side of banner
+        //if (i % 2 === 1) {
+        //  $(this).addClass('right').attr('data-aos', 'fade-left');
+        //} else {
+        //  $(this).addClass('left').attr('data-aos', 'fade-right');
+        //}
       });
       AOS.init({
         anchorPlacement: 'top-top',
@@ -186,7 +183,4 @@
       setupHeaders();
     })
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMvk812wM6ed4uybW8Zhdhq5Jz9Q0f_tM&callback=initMap"
-          async defer></script>
-
 {% endblock extra_js %}
