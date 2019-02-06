@@ -1,14 +1,16 @@
+from django.core.mail import send_mail, EmailMessage
 from django.db import models
 from django.db.models import Q
 from django.utils import timezone
 from modelcluster.fields import ParentalKey
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel, MultiFieldPanel
 from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.core.blocks import CharBlock
-
-from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField, StreamField
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel, MultiFieldPanel
+from wagtail.core.models import Page, Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
+
+from home.forms import ContactForm
 
 
 class HomePage(Page):
@@ -42,9 +44,27 @@ class HomePage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super(HomePage, self).get_context(request)
-        context['current_announcements'] = Announcement.objects\
-            .filter(start_date__lte=timezone.now().date())\
+        context['current_announcements'] = Announcement.objects \
+            .filter(start_date__lte=timezone.now().date()) \
             .filter(Q(end_date__gte=timezone.now().date()) | Q(end_date=None))
+        if request.method == 'GET':
+            context['form'] = ContactForm()
+        else:
+            context['form'] = ContactForm()
+            form = ContactForm(request.POST)
+            if form.is_valid():
+                subject = form.cleaned_data['subject']
+                from_email = form.cleaned_data['from_email']
+                message = form.cleaned_data['message']
+                email = EmailMessage(
+                    subject,
+                    message,
+                    'alexn1336@gmail.com',
+                    ['alexn1336@gmail.com'],
+                    reply_to=[from_email],
+                )
+                email.send()
+                # send_mail(subject, message, from_email, ['alexn1336@gmail.com'])
         return context
 
 
