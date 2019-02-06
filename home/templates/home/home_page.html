@@ -64,11 +64,11 @@
   </section>
 
 
-  <section id="vendors">
-    <div class="background-svg">
-      <h3>vendors</h3>
-    </div>
-  </section>
+{#  <section id="vendors">#}
+{#    <div class="background-svg">#}
+{#      <h3>vendors</h3>#}
+{#    </div>#}
+{#  </section>#}
 
 
   <section id="designlab">
@@ -97,24 +97,6 @@
       </div>
 
     {% endfor %}
-  </section>
-
-  <section id="contact-form">
-    <div class="background-svg">
-      <h3>Contact Us</h3>
-    </div>
-    <div class="container">
-      <div class="row justify-content-md-center">
-        <div class="col-sm-6">
-          <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <button type="submit" class="btn btn-success">Submit Message</button>
-          </form>
-          <br>
-        </div>
-      </div>
-    </div>
   </section>
 
   <footer id="contact">
@@ -168,7 +150,10 @@
 
     function setupAos() {
       $('.background-svg').each(function(i) {
-        $(this).addClass('left').attr('data-aos', 'fade-right');
+        $(this).addClass('left');
+        if (i > 0) {
+          $(this).attr('data-aos', 'fade-right');
+        }
         //Following code alternates side of banner
         //if (i % 2 === 1) {
         //  $(this).addClass('right').attr('data-aos', 'fade-left');

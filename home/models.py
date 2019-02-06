@@ -16,40 +16,15 @@ from django.contrib import messages
 from home.forms import ContactForm
 
 
-class HomePage(Page):
-    about_content = RichTextField(blank=True)
-    layout_lab_link = models.URLField()
-
-    # Contact Info
-    address = models.CharField(max_length=200, null=True)
-    email = models.EmailField(null=True)
-    phone = models.CharField(max_length=100, null=True)
-
-    hours = StreamField([
-        ('hour_info', CharBlock())
-    ], null=True)
+class ContactPage(Page):
+    contact_content = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
-        InlinePanel('announcements', label='Announcements'),
-        FieldPanel('about_content', classname="full"),
-        InlinePanel('gallery_images', label="Gallery images"),
-        FieldPanel('layout_lab_link'),
-        InlinePanel('pricing_sections', label='Pricing Sections'),
-        MultiFieldPanel([
-            FieldPanel('address'),
-            FieldPanel('email'),
-            FieldPanel('phone'),
-            StreamFieldPanel('hours')
-        ], heading='Contact Information')
+        FieldPanel('contact_content', classname='full')
     ]
 
-    parent_page_types = []
-
     def get_context(self, request, *args, **kwargs):
-        context = super(HomePage, self).get_context(request)
-        context['current_announcements'] = Announcement.objects \
-            .filter(start_date__lte=timezone.now().date()) \
-            .filter(Q(end_date__gte=timezone.now().date()) | Q(end_date=None))
+        context = super(ContactPage, self).get_context(request)
         if request.method == 'GET':
             context['form'] = ContactForm()
         else:
@@ -88,7 +63,44 @@ class HomePage(Page):
                 messages.add_message(
                     request, messages.ERROR,
                     'An error occured while submitting your message. Please try again or contact us directly.')
-                # send_mail(subject, message, from_email, ['alexn1336@gmail.com'])
+        return context
+
+
+
+class HomePage(Page):
+    about_content = RichTextField(blank=True)
+    layout_lab_link = models.URLField()
+
+    # Contact Info
+    address = models.CharField(max_length=200, null=True)
+    email = models.EmailField(null=True)
+    phone = models.CharField(max_length=100, null=True)
+
+    hours = StreamField([
+        ('hour_info', CharBlock())
+    ], null=True)
+
+    content_panels = Page.content_panels + [
+        InlinePanel('announcements', label='Announcements'),
+        FieldPanel('about_content', classname="full"),
+        InlinePanel('gallery_images', label="Gallery images"),
+        FieldPanel('layout_lab_link'),
+        InlinePanel('pricing_sections', label='Pricing Sections'),
+        MultiFieldPanel([
+            FieldPanel('address'),
+            FieldPanel('email'),
+            FieldPanel('phone'),
+            StreamFieldPanel('hours')
+        ], heading='Contact Information')
+    ]
+
+    parent_page_types = []
+
+    def get_context(self, request, *args, **kwargs):
+        context = super(HomePage, self).get_context(request)
+        context['current_announcements'] = Announcement.objects \
+            .filter(start_date__lte=timezone.now().date()) \
+            .filter(Q(end_date__gte=timezone.now().date()) | Q(end_date=None))
         return context
 
 

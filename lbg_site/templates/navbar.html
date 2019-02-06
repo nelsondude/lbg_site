@@ -1,6 +1,6 @@
 {% load static %}
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" id="site-nav">
-  <a class="navbar-brand" href="#landing">
+  <a class="navbar-brand" href="/#landing">
     <img src="{% static 'images/lbg_logo.png' %}" class="img-responsive" alt="" height="40px">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-links"
@@ -11,25 +11,26 @@
   <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="nav-links">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="/#about">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#samples">Samples</a>
+        <a class="nav-link" href="/#samples">Samples</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#vendors">Vendors</a>
+        <a class="nav-link" href="/#vendors">Vendors</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#designlab">Design</a>
+        <a class="nav-link" href="/#designlab">Design</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#payment">Payment</a>
+        <a class="nav-link" href="/#pricing">Pricing</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#pricing">Pricing</a>
+        <a class="nav-link" href="/#payment">Payment</a>
       </li>
+      <li class="divider"></li>
       <li class="nav-item">
-        <a class="nav-link" href="#contact">Contact</a>
+        <a class="nav-link" href="/contact">Contact</a>
       </li>
     </ul>
   </div>
@@ -40,13 +41,15 @@
 
   <script>
     $('.nav-link, .navbar-brand').click(function(e) {
-      e.preventDefault();
       var hash = $(this)[0].hash;
-      $('html, body').animate({
-          scrollTop: $(hash).offset().top - 100
-      }, 500);
-      window.location.href = hash;
-      $('#nav-links').collapse('hide');
+      if (hash) {
+        $('html, body').animate({
+            scrollTop: $(hash).offset().top - 100
+        }, 500);
+        window.location.href = hash;
+        $('#nav-links').collapse('hide');
+        e.preventDefault();
+      }
     });
   </script>
 
