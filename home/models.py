@@ -9,6 +9,7 @@ from wagtail.core.blocks import CharBlock
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page, Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
+from django.contrib import messages
 
 from home.forms import ContactForm
 
@@ -64,6 +65,13 @@ class HomePage(Page):
                     reply_to=[from_email],
                 )
                 email.send()
+                messages.add_message(
+                    request, messages.SUCCESS,
+                    'Successfully sent Longbeach Graphix a message. We will contact you shortly.')
+            else:
+                messages.add_message(
+                    request, messages.ERROR,
+                    'An error occured while submitting your message. Please try again or contact us directly.')
                 # send_mail(subject, message, from_email, ['alexn1336@gmail.com'])
         return context
 
