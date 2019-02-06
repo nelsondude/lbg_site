@@ -9,6 +9,7 @@ Django = ">=2.1,<2.2"
 gunicorn = "*"
 django-heroku = "*"
 sendgrid-django = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 

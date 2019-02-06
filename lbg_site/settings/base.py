@@ -28,6 +28,7 @@ SECRET_KEY = os.getenv('SECRET')
 INSTALLED_APPS = [
     'home',
     'search',
+    'crispy_forms',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -177,6 +178,10 @@ WAGTAIL_SITE_NAME = "lbg_site"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+
+# Crispy Forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
