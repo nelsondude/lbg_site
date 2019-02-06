@@ -1,7 +1,9 @@
-from django.core.mail import send_mail, EmailMessage
+from django.core.mail import EmailMultiAlternatives
 from django.db import models
 from django.db.models import Q
+from django.template.loader import render_to_string
 from django.utils import timezone
+from django.utils.html import strip_tags
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel, MultiFieldPanel
 from wagtail.contrib.table_block.blocks import TableBlock
@@ -52,18 +54,32 @@ class HomePage(Page):
             context['form'] = ContactForm()
         else:
             context['form'] = ContactForm()
-            form = ContactForm(request.POST)
+            form = ContactForm(request.POST, request.FILES)
             if form.is_valid():
+
                 subject = form.cleaned_data['subject']
                 from_email = form.cleaned_data['from_email']
                 message = form.cleaned_data['message']
-                email = EmailMessage(
-                    subject,
-                    message,
+                phone = form.cleaned_data['phone']
+                data = {
+                    'from_email': from_email,
+                    'phone': phone,
+                    'message': message
+                }
+
+                msg_html = render_to_string('home/email.html', data)
+                msg_plain = strip_tags(msg_html)
+
+                email = EmailMultiAlternatives(
+                    'CUSTOMER INQUIRY: ' + subject,
+                    msg_plain,
                     'alexn1336@gmail.com',
                     ['alexn1336@gmail.com'],
                     reply_to=[from_email],
                 )
+                email.attach_alternative(msg_html, 'text/html')
+                for file in request.FILES.getlist('file_field'):
+                    email.attach(file.name, file.read(), file.content_type)
                 email.send()
                 messages.add_message(
                     request, messages.SUCCESS,
