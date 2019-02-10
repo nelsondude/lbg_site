@@ -1,3 +1,5 @@
+import os
+
 from django.core.mail import EmailMultiAlternatives
 from django.db import models
 from django.db.models import Q
@@ -49,7 +51,7 @@ class ContactPage(Page):
                     'CUSTOMER INQUIRY: ' + subject,
                     msg_plain,
                     'alexn1336@gmail.com',
-                    ['alexn1336@gmail.com'],
+                    [os.getenv('FORM_EMAIL')],
                     reply_to=[from_email],
                 )
                 email.attach_alternative(msg_html, 'text/html')

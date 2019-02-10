@@ -73,6 +73,17 @@ $tan: rgb(249, 237, 202);
   top: 220px;
 }
 
+#abouttext {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  margin-bottom: 35px;
+  transition: .3s;
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+}
+
 //Header Styling
 $header-color: #FAECC9;
 
@@ -108,11 +119,11 @@ $header-color: #FAECC9;
   &:after {
     content: ' ';
     display: block;
-    //background: linear-gradient($tan, rgb(255, 197, 45));
-    background: $tan;
+    background: linear-gradient($tan, rgb(255, 197, 45));
+    //background: $tan;
     width: 100%;
     height: 200px;
-    transform: translateY(35px);
+    transform: translateY(11px);
   }
 }
 
@@ -231,10 +242,12 @@ section {
   overflow: hidden;
   position: relative;
   z-index: 2;
+  min-height: 640px;
 }
 
 #payment {
   background: $tan;
+  min-height: unset;
   height: 80px;
   padding-left: 30px;
   h3 {
