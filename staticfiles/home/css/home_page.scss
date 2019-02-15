@@ -47,30 +47,30 @@ $tan: rgb(249, 237, 202);
 
 #landing-logo {
   max-width: 100%;
+  width: 600px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 40px;
 }
 
+//Rest of the images
 
-
-%section-image {
-  width: 1600px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: -1;
+.section-image {
+  width: 100%;
+  max-width: 1500px;
+  margin: auto;
+  display: block;
 }
 
-#skyline {
-  @extend %section-image;
-}
-
-#queenmary {
-  @extend %section-image;
-  top: 100px;
-}
-
-#pyramid {
-  @extend  %section-image;
-  top: 220px;
+#abouttext {
+  //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  //padding: 20px;
+  //background: rgba(255, 255, 255, 0.7);
+  //margin-bottom: 35px;
+  //transition: .3s;
+  //&:hover {
+  //  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  //}
 }
 
 //Header Styling
@@ -108,11 +108,12 @@ $header-color: #FAECC9;
   &:after {
     content: ' ';
     display: block;
-    //background: linear-gradient($tan, rgb(255, 197, 45));
-    background: $tan;
+    background: linear-gradient($tan, rgb(255, 197, 45));
+    //background: $tan;
     width: 100%;
     height: 200px;
-    transform: translateY(35px);
+    transform: translateY(11px);
+    //transform: translateY(100px);
   }
 }
 
@@ -191,19 +192,15 @@ table {
 }
 
 tbody > tr:nth-of-type(odd) {
-  background: #f2f2f2
+  background: transparent;
 }
 
 tbody > tr:nth-of-type(even) {
-  background: white;
+  background: rgb(249, 237, 202);
 }
 
 td {
   padding: 8px;
-}
-
-td, th {
-  border: 1px solid #ddd;
 }
 
 tr:hover {
@@ -231,10 +228,12 @@ section {
   overflow: hidden;
   position: relative;
   z-index: 2;
+  min-height: 640px;
 }
 
 #payment {
   background: $tan;
+  min-height: unset;
   height: 80px;
   padding-left: 30px;
   h3 {
