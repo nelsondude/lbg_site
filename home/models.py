@@ -70,7 +70,8 @@ class ContactPage(Page):
 
 class HomePage(Page):
     about_content = RichTextField(blank=True)
-    layout_lab_link = models.URLField()
+    # layout_lab_link = models.URLField()
+    payments_link = models.URLField()
 
     # Contact Info
     address = models.CharField(max_length=200, null=True)
@@ -85,14 +86,15 @@ class HomePage(Page):
         InlinePanel('announcements', label='Announcements'),
         FieldPanel('about_content', classname="full"),
         InlinePanel('gallery_images', label="Gallery images"),
-        FieldPanel('layout_lab_link'),
+        # FieldPanel('layout_lab_link'),
         InlinePanel('pricing_sections', label='Pricing Sections'),
         MultiFieldPanel([
             FieldPanel('address'),
             FieldPanel('email'),
             FieldPanel('phone'),
             StreamFieldPanel('hours')
-        ], heading='Contact Information')
+        ], heading='Contact Information'),
+        FieldPanel('payments_link')
     ]
 
     parent_page_types = []
