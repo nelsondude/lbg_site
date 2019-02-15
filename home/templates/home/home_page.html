@@ -29,7 +29,10 @@
         {% endif %}
       </div>
     </div>
-    <img src="{% static 'home/images/skyline-cropped.png' %}" id="skyline" alt="">
+    <div>
+      <img src="{% static 'home/images/skyline-cropped.png' %}" id="skyline" alt="" class="section-image">
+    </div>
+
   </section>
 
 
@@ -40,7 +43,7 @@
     <div class="container section" id="abouttext" data-aos="fade-up">
       {{ page.about_content|richtext }}
     </div>
-    <img src="{% static 'home/images/queenmary.png' %}" alt="" id="queenmary">
+    <img src="{% static 'home/images/queenmary.png' %}" alt="" id="queenmary" class="section-image">
   </section>
 
 
@@ -50,17 +53,30 @@
     </div>
     <div class="container section">
       <div id="nanogallery" data-nanogallery2='{
-          "thumbnailHeight": auto,
-          "thumbnailWidth": 300,
+          "thumbnailHeight": 250,
+          "thumbnailWidth": 250,
+          "galleryDisplayMode": "pagination",
+          "galleryMaxRows": 2,
+          "thumbnailGutterWidth": 10,
+          "thumbnailGutterHeight": 10,
+          "thumbnailDisplayTransition": "flipUp",
+          "thumbnailDisplayTransitionDuration": 1000,
+          "thumbnailDisplayInterval": 50,
+          "thumbnailHoverEffect2": "scale120",
+          "colorScheme": {
+            "thumbnail": {
+              "borderColor": "rgb(249, 237, 202)"
+            }
+          }
        }'>
         <!-- gallery content -->
         {% for item in page.gallery_images.all %}
-          {% image item.image width-400 as tmp_photo %}
+          {% image item.image height-1000 as tmp_photo %}
           <a href="{{ tmp_photo.url }}" data-ngThump="{{ tmp_photo.url }}">{{ item.caption }}</a>
         {% endfor %}
       </div>
     </div>
-    <img src="{% static 'home/images/pyramid.png' %}" alt="" id="pyramid">
+    <img src="{% static 'home/images/pyramid.png' %}" alt="" id="pyramid" class="section-image">
   </section>
 
 
@@ -87,14 +103,20 @@
       <div class="background-svg">
         <h3>{{ section.pricing_title }}</h3>
       </div>
-      <div class="container">
-        <h3>{{ section.pricing_title }} Pricing</h3>
-        <p class="text-muted">{{ section.caption }}</p>
+      <div class="container-fluid" style="padding-right: 70px; padding-left: 70px;">
+
+        {% if section.caption %}
+          <p class="text-muted">{{ section.caption }}</p>
+        {% endif %}
         {{ section.body }}
         <br>
         <br>
         <br>
       </div>
+      {% if section.image %}
+        {% image section.image width-1600 as tmp_photo %}
+        <img src="{{ tmp_photo.url }}" alt="" class="section-image">
+      {% endif %}
 
     {% endfor %}
   </section>
@@ -119,7 +141,8 @@
 
 
   <section id="payment">
-    <h3>PAYMENTS AND DEPOSITS</h3>
+    <h3>MAKE PAYMENTS AND DEPOSITS</h3>
+    {# Make comment here#}
     <img src="{% static 'home/images/cards.jpeg' %}" alt="" style="float: right; height: 100%;">
   </section>
 

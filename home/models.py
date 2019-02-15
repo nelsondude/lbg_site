@@ -68,7 +68,6 @@ class ContactPage(Page):
         return context
 
 
-
 class HomePage(Page):
     about_content = RichTextField(blank=True)
     layout_lab_link = models.URLField()
@@ -135,7 +134,10 @@ class Announcement(Orderable):
 class PricingSection(Orderable):
     page = ParentalKey(HomePage, on_delete=models.CASCADE, related_name='pricing_sections')
     pricing_title = models.CharField(max_length=200)
-    caption = models.CharField(max_length=200)
+    caption = models.CharField(max_length=200, null=True, blank=True)
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+', null=True, blank=True
+    )
     body = StreamField([
         ('table', TableBlock(), ),
     ], blank=True)
@@ -144,4 +146,5 @@ class PricingSection(Orderable):
         FieldPanel('pricing_title'),
         FieldPanel('caption'),
         StreamFieldPanel('body'),
+        ImageChooserPanel('image')
     ]
