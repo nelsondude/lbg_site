@@ -1,6 +1,7 @@
 from .base import *
 
-DEBUG = False
+# set for heroku puproses
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
