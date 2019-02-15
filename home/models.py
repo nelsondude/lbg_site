@@ -83,18 +83,28 @@ class HomePage(Page):
     ], null=True)
 
     content_panels = Page.content_panels + [
-        InlinePanel('announcements', label='Announcements'),
-        FieldPanel('about_content', classname="full"),
-        InlinePanel('gallery_images', label="Gallery images"),
+        MultiFieldPanel([
+            InlinePanel('announcements', label='Announcements'),
+        ], classname="collapsible collapsed", heading='Announcements'),
+        MultiFieldPanel([
+            FieldPanel('about_content', classname="full"),
+        ], classname="collapsible collapsed", heading='About'),
+        MultiFieldPanel([
+            InlinePanel('gallery_images', label="Gallery images"),
+        ], classname="collapsible collapsed", heading='Gallery Images'),
         # FieldPanel('layout_lab_link'),
-        InlinePanel('pricing_sections', label='Pricing Sections'),
+        MultiFieldPanel([
+            InlinePanel('pricing_sections', label='Pricing Sections'),
+        ], classname="collapsible collapsed", heading="Pricing Sections"),
         MultiFieldPanel([
             FieldPanel('address'),
             FieldPanel('email'),
             FieldPanel('phone'),
             StreamFieldPanel('hours')
-        ], heading='Contact Information'),
-        FieldPanel('payments_link')
+        ], heading='Contact Information', classname="collapsible collapsed"),
+        MultiFieldPanel([
+            FieldPanel('payments_link')
+        ], heading='Payments Info', classname="collapsible collapsed")
     ]
 
     parent_page_types = []
