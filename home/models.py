@@ -133,7 +133,7 @@ class GalleryImage(Orderable):
 class Announcement(Orderable):
     page = ParentalKey(HomePage, on_delete=models.CASCADE, related_name='announcements')
     announcement = models.CharField(blank=True, max_length=200)
-    start_date = models.DateField(default=timezone.now(), null=False)
+    start_date = models.DateField(default=timezone.now, null=False)
     end_date = models.DateField(null=True, blank=True)
 
     panels = [
