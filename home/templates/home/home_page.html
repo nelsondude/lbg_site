@@ -192,14 +192,15 @@
     }
 
     function setupHeaders() {
-      $('.background-svg > h3').click(function (e) {
-        var hash = '#' + $(this).parent().parent()[0].id;
-        $('html, body').animate({
-          scrollTop: $(hash).offset().top - 100
-        }, 500);
-        window.location.href = hash;
-        $('#nav-links').collapse('hide');
-      });
+      // Allows scrolling to section by clicking on header h3 text: currently disabled
+      //$('.background-svg > h3').click(function (e) {
+      //  var hash = '#' + $(this).parent().parent()[0].id;
+      //  $('html, body').animate({
+      //    scrollTop: $(hash).offset().top - 100
+      //  }, 500);
+      //  window.location.href = hash;
+      //  $('#nav-links').collapse('hide');
+      //});
 
       $('.background-svg').prepend("<img src='{% static 'home/images/right.svg' %}'>")
     }
