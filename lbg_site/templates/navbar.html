@@ -1,0 +1,32 @@
+{% load static %}
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" id="site-nav">
+  <a class="navbar-brand" href="#">
+    <img src="{% static 'images/lbg_logo.png' %}" class="img-responsive" alt="" height="40px">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Gallery</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Vendors</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Design</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+{% block extra_js %}
+
+{% endblock extra_js %}

@@ -1,0 +1,40 @@
+#landing {
+  text-align: center;
+  min-height: 700px;
+  position: relative;
+}
+
+.landing-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.announcements {
+  background: rgb(250, 233, 189);
+  border-radius: 200px;
+  height: 50px;
+  line-height: 50px;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 0 60px;
+}
+
+.header-left, .header-right {
+  height: 40px;
+  line-height: 40px;
+  background: black;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  padding: 0 150px;
+  margin-bottom: 20px;
+}
+
+#designlab {
+  text-align: center;
+  img {
+    padding: 100px 0;
+  }
+}
