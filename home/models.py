@@ -1,4 +1,5 @@
 import os
+from smtplib import SMTPException
 
 from django.core.mail import EmailMultiAlternatives
 from django.db import models
@@ -32,8 +33,9 @@ class ContactPage(Page):
         else:
             context['form'] = ContactForm()
             form = ContactForm(request.POST, request.FILES)
-            if form.is_valid():
-
+            try:
+                if not form.is_valid():
+                    raise KeyError('invalid form submitted')
                 subject = form.cleaned_data['subject']
                 from_email = form.cleaned_data['from_email']
                 message = form.cleaned_data['message']
@@ -57,14 +59,19 @@ class ContactPage(Page):
                 email.attach_alternative(msg_html, 'text/html')
                 for file in request.FILES.getlist('file_field'):
                     email.attach(file.name, file.read(), file.content_type)
-                email.send()
+                email.send(fail_silently=False)
                 messages.add_message(
                     request, messages.SUCCESS,
                     'Successfully sent Longbeach Graphix a message. We will contact you shortly.')
-            else:
+            except KeyError:
                 messages.add_message(
                     request, messages.ERROR,
-                    'An error occured while submitting your message. Please try again or contact us directly.')
+                    'It seems you didn\'t provide all of the necessary form data. Please fill out the required fields.')
+            except (SMTPException, Exception) as _:
+                messages.add_message(
+                    request, messages.ERROR,
+                    'An error happened while sending your email. Please try again or contact us via email.')
+
         return context
 
 
