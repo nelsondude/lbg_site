@@ -102,7 +102,7 @@ class HomePage(Page):
         # FieldPanel('layout_lab_link'),
         MultiFieldPanel([
             InlinePanel('pricing_sections', label='Pricing Sections'),
-        ], classname="collapsible collapsed", heading="Pricing Sections"),
+        ], heading="Pricing Sections"),
         MultiFieldPanel([
             FieldPanel('address'),
             FieldPanel('email'),
