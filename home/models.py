@@ -81,6 +81,7 @@ class HomePage(Page):
     payments_link = models.URLField()
 
     # Contact Info
+    contact = RichTextField(blank=True)
     address = models.CharField(max_length=200, null=True)
     email = models.EmailField(null=True)
     phone = models.CharField(max_length=100, null=True)
@@ -104,10 +105,11 @@ class HomePage(Page):
             InlinePanel('pricing_sections', label='Pricing Sections'),
         ], heading="Pricing Sections"),
         MultiFieldPanel([
-            FieldPanel('address'),
-            FieldPanel('email'),
-            FieldPanel('phone'),
-            StreamFieldPanel('hours')
+            # FieldPanel('address'),
+            # FieldPanel('email'),
+            # FieldPanel('phone'),
+            # StreamFieldPanel('hours')
+            FieldPanel('contact')
         ], heading='Contact Information', classname="collapsible collapsed"),
         MultiFieldPanel([
             FieldPanel('payments_link')

@@ -127,14 +127,15 @@
         width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
     <div id="lbg_contact">
-      <img src="{% static 'images/lbg_logo_yellow.png' %}" class="mx-auto d-block" alt="" style="margin-bottom: 10px;">
-      {% if page.address %}<div>{{ page.address }}</div>{% endif %}
-      {% if page.phone %}<a href="tel:{{ page.phone }}">{{ page.phone }}</a>{% endif %}
-      {% if page.email %}<a href="mailto:{{ page.email }}">{{ page.email }}</a>{% endif %}
+      {{ page.contact|richtext }}
+{#      <img src="{% static 'images/lbg_logo_yellow.png' %}" class="mx-auto d-block" alt="" style="margin-bottom: 10px;">#}
+{#      {% if page.address %}<div>{{ page.address }}</div>{% endif %}#}
+{#      {% if page.phone %}<a href="tel:{{ page.phone }}">{{ page.phone }}</a>{% endif %}#}
+{#      {% if page.email %}<a href="mailto:{{ page.email }}">{{ page.email }}</a>{% endif %}#}
 
-      <hr>
-      <h3>Hours</h3>
-      {{ page.hours }}
+{#      <hr>#}
+{#      <h3>Hours</h3>#}
+{#      {{ page.hours }}#}
     </div>
   </footer>
 
