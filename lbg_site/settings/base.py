@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'home',
     'search',
     'crispy_forms',
+    'storages',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -187,6 +188,12 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+# AWS Config
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME', '')
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID', '')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', '')
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())

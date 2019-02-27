@@ -10,6 +10,8 @@ gunicorn = "*"
 django-heroku = "*"
 sendgrid-django = "*"
 django-crispy-forms = "*"
+django-storages = "*"
+"boto3" = "*"
 
 [dev-packages]
 
