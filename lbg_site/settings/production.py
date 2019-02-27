@@ -4,6 +4,7 @@ from .base import *
 DEBUG = True
 
 SECURE_SSL_REDIRECT = True
+PREPEND_WWW = True
 
 ALLOWED_HOSTS = ['*']
 
