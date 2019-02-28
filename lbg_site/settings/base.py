@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'search',
     'crispy_forms',
     'storages',
+    'captcha',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

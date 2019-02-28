@@ -1,4 +1,5 @@
 from django import forms
+from captcha.fields import CaptchaField
 
 
 class ContactForm(forms.Form):
@@ -8,3 +9,4 @@ class ContactForm(forms.Form):
     phone = forms.CharField(widget=forms.TextInput(attrs={'type': 'tel'}), required=False, label='Phone Number')
     file_field = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}), required=False,
                                  label='Attachments (multiple is allowed)')
+    captcha = CaptchaField()

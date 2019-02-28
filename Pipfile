@@ -12,6 +12,7 @@ sendgrid-django = "*"
 django-crispy-forms = "*"
 django-storages = "*"
 "boto3" = "*"
+django-simple-captcha = "*"
 
 [dev-packages]
 

@@ -64,9 +64,13 @@ class ContactPage(Page):
                     request, messages.SUCCESS,
                     'Successfully sent Longbeach Graphix a message. We will contact you shortly.')
             except KeyError:
-                messages.add_message(
-                    request, messages.ERROR,
-                    'It seems you didn\'t provide all of the necessary form data. Please fill out the required fields.')
+                if 'captcha' in form.errors:
+                    messages.add_message(request, messages.ERROR,
+                                         'Please type in the correct captcha code.')
+                else:
+                    messages.add_message(
+                        request, messages.ERROR,
+                        'It seems you didn\'t provide all of the necessary form data. Please fill out the required fields.')
             except (SMTPException, Exception) as _:
                 messages.add_message(
                     request, messages.ERROR,
