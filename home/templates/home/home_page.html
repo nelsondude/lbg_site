@@ -40,7 +40,7 @@
     <div class="background-svg">
       <h3>ABOUT</h3>
     </div>
-    <div class="container section" id="abouttext" data-aos="fade-up">
+    <div class="container extra-padding" id="abouttext" data-aos="fade-up">
       {{ page.about_content|richtext }}
     </div>
     <img src="{% static 'home/images/queenmary.png' %}" alt="" id="queenmary" class="section-image">
@@ -51,7 +51,7 @@
     <div class="background-svg">
       <h3>Samples</h3>
     </div>
-    <div class="container section">
+    <div class="container extra-padding">
       <div id="nanogallery" data-nanogallery2='{
           "thumbnailHeight": 250,
           "thumbnailWidth": 250,
@@ -79,30 +79,30 @@
   </section>
 
 
-{#  <section id="vendors">#}
-{#    <div class="background-svg">#}
-{#      <h3>vendors</h3>#}
-{#    </div>#}
-{#  </section>#}
+  {#  <section id="vendors">#}
+  {#    <div class="background-svg">#}
+  {#      <h3>vendors</h3>#}
+  {#    </div>#}
+  {#  </section>#}
 
 
-{#  <section id="designlab">#}
-{#    <div class="background-svg">#}
-{#      <h3>Design Lab</h3>#}
-{#    </div>#}
-{#    <div class="container section text-center">#}
-{#      <a href="{{ page.layout_lab_link }}" target="_blank">#}
-{#        <img src="http://www.layoutlab.com/images/welcome/logo.png" alt="" style="max-width: 80%;">#}
-{#      </a>#}
-{#    </div>#}
-{#  </section>#}
+  {#  <section id="designlab">#}
+  {#    <div class="background-svg">#}
+  {#      <h3>Design Lab</h3>#}
+  {#    </div>#}
+  {#    <div class="container extra-padding text-center">#}
+  {#      <a href="{{ page.layout_lab_link }}" target="_blank">#}
+  {#        <img src="http://www.layoutlab.com/images/welcome/logo.png" alt="" style="max-width: 80%;">#}
+  {#      </a>#}
+  {#    </div>#}
+  {#  </section>#}
 
   <section id="pricing">
     {% for section in page.pricing_sections.all %}
       <div class="background-svg">
         <h3>{{ section.pricing_title }}</h3>
       </div>
-      <div class="container-fluid" style="padding-right: 70px; padding-left: 70px;">
+      <div class="container-fluid pricing-content">
 
         {% if section.caption %}
           <p class="text-muted">{{ section.caption }}</p>
@@ -121,21 +121,17 @@
   </section>
 
   <footer id="contact">
-    <div id="lbg_map">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.5596200497284!2d-118.14364014907135!3d33.77204403979623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd31b6d2ead1d7%3A0x341943fd18ebd091!2s406+Ximeno+Ave%2C+Long+Beach%2C+CA+90814!5e0!3m2!1sen!2sus!4v1549293989595"
-        width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
-    </div>
-    <div id="lbg_contact">
-      {{ page.contact|richtext }}
-{#      <img src="{% static 'images/lbg_logo_yellow.png' %}" class="mx-auto d-block" alt="" style="margin-bottom: 10px;">#}
-{#      {% if page.address %}<div>{{ page.address }}</div>{% endif %}#}
-{#      {% if page.phone %}<a href="tel:{{ page.phone }}">{{ page.phone }}</a>{% endif %}#}
-{#      {% if page.email %}<a href="mailto:{{ page.email }}">{{ page.email }}</a>{% endif %}#}
-
-{#      <hr>#}
-{#      <h3>Hours</h3>#}
-{#      {{ page.hours }}#}
+    <div class="row row-no-padding">
+      <div class="col-md-6">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.5596200497284!2d-118.14364014907135!3d33.77204403979623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd31b6d2ead1d7%3A0x341943fd18ebd091!2s406+Ximeno+Ave%2C+Long+Beach%2C+CA+90814!5e0!3m2!1sen!2sus!4v1549293989595"
+          width="100%" frameborder="0" id="map" allowfullscreen></iframe>
+      </div>
+      <div class="col-md-6">
+        <div id="lbg_contact">
+          {{ page.contact|richtext }}
+        </div>
+      </div>
     </div>
   </footer>
 
@@ -150,8 +146,10 @@
 
   <div class="icon-bar d-none d-md-block">
     <a href="https://www.facebook.com/lbgraphix/" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-    <a href="https://www.instagram.com/longbeachgraphix/?hl=en" class="instagram" target="_blank"><i class="fa fa-instagram"></i></a>
-    <a href="https://www.linkedin.com/company/long-beach-graphix/" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
+    <a href="https://www.instagram.com/longbeachgraphix/?hl=en" class="instagram" target="_blank"><i
+      class="fa fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/company/long-beach-graphix/" class="linkedin" target="_blank"><i
+      class="fa fa-linkedin"></i></a>
   </div>
 
 
@@ -174,7 +172,7 @@
     }
 
     function setupAos() {
-      $('.background-svg').each(function(i) {
+      $('.background-svg').each(function (i) {
         $(this).addClass('left');
         if (i > 0) {
           $(this).attr('data-aos', 'fade-right');

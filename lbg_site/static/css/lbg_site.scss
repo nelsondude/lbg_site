@@ -3,6 +3,10 @@ body {
   padding-top: 50px;
 }
 
+td {
+  hyphens: auto;
+}
+
 .bg-dark {
   background-color: #101010 !important;
 }

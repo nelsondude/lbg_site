@@ -62,17 +62,6 @@ $tan: rgb(249, 237, 202);
   display: block;
 }
 
-#abouttext {
-  //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  //padding: 20px;
-  //background: rgba(255, 255, 255, 0.7);
-  //margin-bottom: 35px;
-  //transition: .3s;
-  //&:hover {
-  //  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  //}
-}
-
 //Header Styling
 $header-color: #FAECC9;
 
@@ -101,15 +90,14 @@ $header-color: #FAECC9;
   @media (max-width: 650px) {
     height: $header-height-sm;
   }
+
   &:after {
     content: ' ';
     display: block;
     background: linear-gradient($tan, rgb(255, 197, 45));
-    //background: $tan;
     width: 100%;
     height: 200px;
     transform: translateY(11px);
-    //transform: translateY(100px);
   }
 }
 
@@ -143,35 +131,25 @@ $edge-distance: 300px;
   margin: auto;
 }
 
-//Design Lab Styling
-#designlab {
-  //text-align: center;
-}
 
 //Footer Styling
 footer {
-  display: flex;
   min-height: 300px;
-
-  & > div:first-child {
-    flex-grow: 1;
-  }
 }
+
 
 #map {
   height: 100%;
+  min-height: 300px;
 }
 
 #lbg_contact {
-  padding: 40px 50px;
-  width: 50%;
-  //background: black;
-  //color: white;
-  //text-align: center;
-  //border-top: 1px solid white;
+  padding: 40px 30px !important;
+
   p {
     margin-bottom: .1rem;
   }
+
   img {
     width: 60%;
   }
@@ -186,6 +164,13 @@ footer {
 }
 
 //Pricing Styling
+.pricing-content {
+  @media only screen and (min-width: 600px) {
+    padding-right: 70px;
+    padding-left: 70px;
+  }
+}
+
 table {
   width: 100%;
 }
@@ -213,7 +198,7 @@ th {
 }
 
 //Global Styling
-.section {
+.extra-padding {
   padding-top: 80px;
   padding-bottom: 80px;
 
@@ -230,11 +215,23 @@ section {
   min-height: 640px;
 }
 
+.row-no-padding {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+//Payment Section Styling
 #payment {
   background: $tan;
   min-height: unset;
   height: 80px;
   padding-left: 30px;
+
   h3 {
     display: inline;
     line-height: 80px;
