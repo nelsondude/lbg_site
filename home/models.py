@@ -90,6 +90,17 @@ class HomePage(Page):
     email = models.EmailField(null=True)
     phone = models.CharField(max_length=100, null=True)
 
+    # Section Images
+    landing_image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+', null=True, blank=True
+    )
+    about_image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+', null=True, blank=True
+    )
+    samples_image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+', null=True, blank=True
+    )
+
     hours = StreamField([
         ('hour_info', CharBlock())
     ], null=True)
@@ -98,6 +109,11 @@ class HomePage(Page):
         MultiFieldPanel([
             InlinePanel('announcements', label='Announcements'),
         ], classname="collapsible collapsed", heading='Announcements'),
+        MultiFieldPanel([
+            ImageChooserPanel('landing_image'),
+            ImageChooserPanel('about_image'),
+            ImageChooserPanel('samples_image')
+        ], classname="collapsible collapsed", heading='Section Images'),
         MultiFieldPanel([
             FieldPanel('about_content', classname="full"),
         ], classname="collapsible collapsed", heading='About'),

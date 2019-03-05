@@ -56,8 +56,8 @@ $tan: rgb(249, 237, 202);
 //Rest of the images
 
 .section-image {
-  width: 100%;
-  max-width: 1500px;
+  width: 100% !important;
+  max-width: 1500px !important;
   margin: auto;
   display: block;
 }
