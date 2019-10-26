@@ -1,5 +1,6 @@
 import os
 from smtplib import SMTPException
+import logging
 
 from django.core.mail import EmailMultiAlternatives
 from django.db import models
@@ -17,6 +18,8 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from django.contrib import messages
 
 from home.forms import ContactForm
+
+logger = logging.getLogger(__name__)
 
 
 class ContactPage(Page):
@@ -63,7 +66,8 @@ class ContactPage(Page):
                 messages.add_message(
                     request, messages.SUCCESS,
                     'Successfully sent Longbeach Graphix a message. We will contact you shortly.')
-            except KeyError:
+            except KeyError as err:
+                logger.error(err)
                 if 'captcha' in form.errors:
                     messages.add_message(request, messages.ERROR,
                                          'Please type in the correct captcha code.')
@@ -71,7 +75,8 @@ class ContactPage(Page):
                     messages.add_message(
                         request, messages.ERROR,
                         'It seems you didn\'t provide all of the necessary form data. Please fill out the required fields.')
-            except (SMTPException, Exception) as _:
+            except (SMTPException, Exception) as err:
+                logger.error(err)
                 messages.add_message(
                     request, messages.ERROR,
                     'An error happened while sending your email. Please try again or contact us via email.')
