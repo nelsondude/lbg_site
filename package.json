@@ -12,6 +12,9 @@
     "livereload": "^0.7.0",
     "node-sass": "^4.11.0"
   },
+  "engines": {
+    "node": "8.11.4"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
