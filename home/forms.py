@@ -1,5 +1,7 @@
 from django import forms
 from captcha.fields import CaptchaField
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field
 
 
 class ContactForm(forms.Form):
@@ -10,3 +12,17 @@ class ContactForm(forms.Form):
     file_field = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}), required=False,
                                  label='Attachments (multiple is allowed)')
     captcha = CaptchaField()
+
+    def __init__(self, *args, **kwargs):
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Fieldset(
+                '',
+                'from_email',
+                'subject',
+                'message',
+                'phone',
+                Field('file_field', css_class="")
+            )
+        )
+        super(ContactForm, self).__init__(*args, **kwargs)
