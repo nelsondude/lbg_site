@@ -29,6 +29,12 @@
         {% endif %}
       </div>
     </div>
+    <br>
+    <div class="announcements">
+      <a href="https://designstudiouser.com/5faaf4aa2433d4-94955109" target="_blank"
+         style="color: black; padding-left: 30px; padding-right: 30px;"
+         referrerpolicy="no-referrer"><span style="color: red;">NEW</span> ONLINE SHIRT DESIGN STUDIO</a>
+    </div>
     <div>
       {% image page.landing_image original as landing_image %}
       <img src="{{ landing_image.url }}" alt="" class="section-image">
@@ -44,8 +50,8 @@
     <div class="container extra-padding" id="abouttext" data-aos="fade-up">
       {{ page.about_content|richtext }}
     </div>
-      {% image page.about_image original as about_image %}
-      <img src="{{ about_image.url }}" alt="" class="section-image">
+    {% image page.about_image original as about_image %}
+    <img src="{{ about_image.url }}" alt="" class="section-image">
   </section>
 
 
@@ -77,8 +83,8 @@
         {% endfor %}
       </div>
     </div>
-      {% image page.samples_image original as samples_image %}
-      <img src="{{ samples_image.url }}" alt="" class="section-image">
+    {% image page.samples_image original as samples_image %}
+    <img src="{{ samples_image.url }}" alt="" class="section-image">
   </section>
 
 
