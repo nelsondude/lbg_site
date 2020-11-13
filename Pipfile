@@ -4,15 +4,15 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-wagtail = ">=2.4,<2.5"
-Django = ">=2.1.6,<2.2"
-gunicorn = "*"
-django-heroku = "*"
-sendgrid-django = "*"
-django-crispy-forms = "*"
-django-storages = "*"
-"boto3" = "*"
-django-simple-captcha = "*"
+wagtail = "2.11.1"
+Django = "2.2"
+gunicorn = "19.9.0"
+django-heroku = "0.3.1"
+sendgrid-django = "4.2.0"
+django-crispy-forms = "1.8.0"
+django-storages = "1.7.2"
+"boto3" = "1.10.2"
+django-simple-captcha = "0.5.12"
 
 [dev-packages]
 
