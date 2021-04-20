@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-wagtail = "2.4"
+wagtail = "2.11.6"
 Django = "2.1.6"
 gunicorn = "19.9.0"
 django-heroku = "0.3.1"
