@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>
+        Long Beach Graphix
+    </title>
+
+
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+
+    <link rel="shortcut icon" href="">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+
+    <!-- nanogallery2 -->
+    <link href="https://unpkg.com/nanogallery2@2.3.0/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://unpkg.com/nanogallery2@2.3.0/dist/jquery.nanogallery2.min.js"></script>
+
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="social.css">
+    <link rel="stylesheet" href="lbg_site.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- remove analytics tag since tracking is done through google tag manager -->
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-K3JM7JX');</script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3JM7JX"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" id="site-nav">
+    <a class="navbar-brand" href="/#landing">
+        <img src="{% static 'images/lbg_logo_notextwhite.png' %}" class="img-responsive" alt="" height="40px">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-links"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="nav-links">
+        <ul class="navbar-nav ml-auto">
+            <!--
+            <li class="nav-item">
+                <a class="nav-link" href="/#about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/#samples">Samples</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/#pricing">Pricing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/#payment">Payment</a>
+            </li>
+            <li class="divider"></li>
+            -->
+            <li class="nav-item">
+                <a class="nav-link" href="/#contact">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<section id="landing">
+    <img src="lbg_site/static/images/lbg_logo_high_quality.png" class="mx-auto d-block" id="landing-logo" alt="">
+    <br>
+    <h5>local and family owned since 2009</h5>
+    <p>We offer a variety of graphic design services! Please get in touch.</p>
+    <br>
+    <div class="announcements">
+        <div id="ann-header">
+            Announcements&nbsp;&vert;&nbsp;
+        </div>
+        <div id="ann-content">
+            <div>Down for Maintenance - Contact Info Below</div>
+        </div>
+    </div>
+    <br>
+    <div class="announcements">
+        <a href="https://designstudiouser.com/5faaf4aa2433d4-94955109" target="_blank"
+           style="color: black; padding-left: 30px; padding-right: 30px;"
+           referrerpolicy="no-referrer"><span style="color: red;">NEW</span> ONLINE SHIRT DESIGN STUDIO</a>
+    </div>
+    <div>
+        <img src="home/static/home/images/skyline-cropped.png" alt="" class="section-image">
+    </div>
+
+
+    <script>
+        $('.nav-link, .navbar-brand').click(function (e) {
+            var hash = $(this)[0].hash;
+            if (hash) {
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top - 100
+                }, 500);
+                window.location.href = hash;
+                $('#nav-links').collapse('hide');
+                e.preventDefault();
+            }
+        });
+    </script>
+</section>
+
+
+<div class="row" id="contact">
+
+    <div class="col-sm-6">
+        <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=406%20Ximeno%20Ave,%20Long%20Beach,%20CA%2090814+(Long%20Beach%20Graphix)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+            <a href="https://www.maps.ie/distance-area-calculator.html">measure acres/hectares on map</a>
+        </iframe>
+
+    </div>
+    <div class="col-sm-6">
+        <h2>Contact</h2>
+        <h5>Long Beach Graphix</h5>
+        <address>
+            406 Ximeno Ave <br/>
+            Long Beach, CA 90814
+        </address>
+        <a href="mailto:longbeachgraphix@gmail.com">longbeachgraphix@gmail.com</a><br>
+        <a href="tel:+15624335358">+1 (562) 433-5358</a>
+    </div>
+</div>
+</body>
+</html>

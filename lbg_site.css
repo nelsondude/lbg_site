@@ -1,0 +1,17 @@
+body {
+	 background: #ffc52d;
+	 padding-top: 50px;
+}
+ td {
+	 hyphens: auto;
+}
+ .bg-dark {
+	 background-color: #101010 !important;
+}
+ .navbar {
+	 padding: 0 1rem;
+}
+ .divider {
+	 margin: 0 10px;
+	 border: 1px solid rgba(255, 255, 255, .5);
+}
